@@ -194,7 +194,8 @@ class MRT_DPO_Trainer:
                     worst_idx = wers.index(max(wers))  # WER最高
                 else:
                     #worst_idx = wers.index(sorted(set(wers))[1])  # WER次低
-                    worst_idx = wers.index(random.choice(sorted(set(wers))[1:-1]))  # WER次低
+                    #worst_idx = wers.index(random.choice(sorted(set(wers))[1:-1]))  # WER次低
+                    worst_idx = wers.index(random.choice(sorted(set(x for x in wers if x != 0))[:3]))
                 dpo_rejected_tokens.append(hyps[worst_idx]['tokens'])
                 
                 # --- 构建 MRT 数据 ---
